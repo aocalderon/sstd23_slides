@@ -76,7 +76,7 @@
 
     \begin{frame}{Advantages, challenges and contributions}
         \begin{itemize}
-            \item Very efficient for computation of \textit{overlay maps} and \textit{overlay operators}.
+            \item Very efficient for computation of  \textit{overlay operators}.
             \item Allows multiple operations over the same DCEL.
             \item The output of a DCEL operator can be input to another DCEL operator.
         \end{itemize}
@@ -116,6 +116,7 @@
                 \item Consider two (simple) input DCELs $A_1$ and $B_1$.  The sequential algorithm first finds the intersections of half-edges.
                 \item Then, new vertices (e.g. $c_1, c_2$) are created,  half-edges are updated, new faces are added and labeled (e.g. $A_1B_1$).
         \end{itemize}
+        \vspace{0.5cm}
     
         \centering
         \includegraphics[width=\textwidth]{figures/dcel_seq}
@@ -127,6 +128,8 @@
             \item Partition Strategy: we partition the space into cells using a spatial index (e.g. quadtree)
             \item Each input DCEL layer (e.g. A, B) is partitioned using the index
         \end{itemize}
+        \vspace{0.25cm}
+
         \centering
         \includegraphics[width=0.8\textwidth]{figures/partition_strategy}
     \end{frame}
@@ -137,6 +140,8 @@
             \item Each cell should contain all information needed so that it can compute the overlay DCEL locally
             \item For each cell to be independent, we need to create "artificial" edges and vertices
         \end{itemize}
+        \vspace{0.25cm}
+
         \centering
         \includegraphics[width=0.8\textwidth]{figures/partition_strategy}
     \end{frame}
