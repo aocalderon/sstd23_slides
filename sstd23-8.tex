@@ -79,17 +79,29 @@
             \item Very efficient for computation of \textit{overlay maps} and \textit{overlay operators}.
             \item Allows multiple operations over the same DCEL.
             \item The output of a DCEL operator can be input to another DCEL operator.
-             
         \end{itemize}
         \vspace{0.25cm}
 
         \centering
-        \includegraphics[width=0.9\textwidth]{figures/dcel_operators}        
+        
+        \begin{tikzpicture}
+        \node (A) {\includegraphics[width=0.4\textwidth]{figures/A}};
+        \pause
+        \node (X) {\includegraphics[width=0.5\textwidth]{figures/blank}};
+        \node (B) {\includegraphics[width=0.4\textwidth]{figures/B}};
+        \pause
+        \node (X) {\includegraphics[width=0.5\textwidth]{figures/blank}};
+        \node (AB) {\includegraphics[width=0.4\textwidth]{figures/AB}};
+        \pause
+        \node (X) {\includegraphics[width=0.5\textwidth]{figures/blank}};
+        \node (O) {\includegraphics[width=\textwidth]{figures/dcel_operators}};
+        \end{tikzpicture}        
+        
+        %\includegraphics[width=0.9\textwidth]{figures/dcel_operators}        
     \end{frame}
 
     \begin{frame}{Advantages, challenges and contributions}
         \begin{itemize}
-    
             \item Currently only sequential DCEL implementations exist.
             \item Unable to deal with large datasets (i.e. US Census tracks at national level).
             \item We propose a \textit{scalable} and \textit{distributed} approach to compute the overlay between two DCEL layers.
@@ -273,7 +285,42 @@
             \centering
             \includegraphics[width=\textwidth]{figures/gadm}
         \end{minipage}
-    \end{frame}       
+    \end{frame}
+    
+
+    \begin{frame}{Experimental evaluation}
+        \begin{itemize}
+            \item MainUS scale-up and speed-up.
+        \end{itemize}
+        \vspace{1cm}
+
+        \begin{minipage}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/MainUS_scaleup}
+        \end{minipage}\hfill % maximize the horizontal separation
+        \begin{minipage}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/MainUS_speedup}
+        \end{minipage}
+    \end{frame}
+    
+
+    \begin{frame}{Experimental evaluation}
+        \begin{itemize}
+            \item GADM scale-up and speed-up.
+        \end{itemize}
+        \vspace{1cm}
+
+        \begin{minipage}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/GADM_scaleup}
+        \end{minipage}\hfill % maximize the horizontal separation
+        \begin{minipage}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/GADM_speedup}
+        \end{minipage}
+    \end{frame}
+    
     
     \begin{frame}{Conclusions}
         \begin{itemize}
