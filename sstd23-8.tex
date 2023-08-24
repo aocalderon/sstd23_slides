@@ -112,26 +112,31 @@
     \end{frame}
     
     \begin{frame}{Sequential implementation}
-     \begin{itemize}
-            \item Consider two (simple) input DCELs $A_1$ and $B_1$
-            \item The sequential algorithm first finds the intersections of half-edges
-            \item New vertices (e.g. $c_1, c_2$) are created and half-edges are updated
-            \item New faces are added and labeled (e.g. $A_1B_1$)
-    \end{itemize}     
+        \begin{itemize}
+                \item Consider two (simple) input DCELs $A_1$ and $B_1$.  The sequential algorithm first finds the intersections of half-edges.
+                \item Then, new vertices (e.g. $c_1, c_2$) are created,  half-edges are updated, new faces are added and labeled (e.g. $A_1B_1$).
+        \end{itemize}
     
         \centering
         \includegraphics[width=\textwidth]{figures/dcel_seq}
     \end{frame}
     
     \begin{frame}{Scalable Implementation}
-    \begin{itemize}
-    \small
-            \item Partition Strategy: we partition the space into cells using a spatial index (e.g. quad tree)
+        \begin{itemize}
+            \small
+            \item Partition Strategy: we partition the space into cells using a spatial index (e.g. quadtree)
             \item Each input DCEL layer (e.g. A, B) is partitioned using the index
+        \end{itemize}
+        \centering
+        \includegraphics[width=0.8\textwidth]{figures/partition_strategy}
+    \end{frame}
+
+    \begin{frame}{Scalable Implementation}
+        \begin{itemize}
+            \small
             \item Each cell should contain all information needed so that it can compute the overlay DCEL locally
             \item For each cell to be independent, we need to create "artificial" edges and vertices
-            
-    \end{itemize}    
+        \end{itemize}
         \centering
         \includegraphics[width=0.8\textwidth]{figures/partition_strategy}
     \end{frame}
@@ -165,7 +170,6 @@
                 \item We next discuss the \textbf{orphan cell} problem (orphan holes are handled similarly).   
                 \item A large face (e.g. the red polygon in the figure) can contain cells that do not intersect with any of the face's boundary edges (called \textit{regular edges}).
                 \item Such cells do not contain any label and thus we do not know which face they belong to.
-                \item We provide an algorithm to efficiently solve the orphan cell problem.  
             \end{itemize}
         \end{minipage}\hfill % maximize the horizontal separation
         \begin{minipage}{0.4\textwidth}
@@ -175,6 +179,11 @@
     \end{frame}
     
     \begin{frame}{Labeling orphan cells and orphan holes}
+        \begin{itemize}
+            \item We provide an algorithm to efficiently solve the orphan cell problem.
+        \end{itemize}
+        \vspace{0.5cm}
+
         \centering
         \includegraphics[width=\textwidth]{figures/holes2}
     \end{frame}
@@ -217,7 +226,6 @@
                     \item However, in many cases one of the layers has much more half-edges than the other.
                     \item Sweep-line algorithms to detect intersections run over all the edges.
                     \item Instead we scan the larger dataset only for the x-intervals where there are half-edges from the smaller dataset.
-                  
                 \end{itemize}
         \end{itemize}
     \end{frame}
@@ -286,7 +294,6 @@
             \includegraphics[width=\textwidth]{figures/gadm}
         \end{minipage}
     \end{frame}
-    
 
     \begin{frame}{Experimental evaluation}
         \begin{itemize}
@@ -303,7 +310,6 @@
             \includegraphics[width=\textwidth]{figures/MainUS_speedup}
         \end{minipage}
     \end{frame}
-    
 
     \begin{frame}{Experimental evaluation}
         \begin{itemize}
@@ -321,7 +327,6 @@
         \end{minipage}
     \end{frame}
     
-    
     \begin{frame}{Conclusions}
         \begin{itemize}
             \item We introduced SDCEL, a scalable approach to compute the overlay operation among two layers that represent polygons from a planar subdivision of a surface.
@@ -331,4 +336,7 @@
         \end{itemize}
     \end{frame}    
 
+    \begin{frame}{ \ }
+        \LARGE Thank you!
+    \end{frame}
 \end{document}
