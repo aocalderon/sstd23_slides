@@ -44,9 +44,10 @@
     \begin{frame}{What is a DCEL?}
         \begin{minipage}{0.65\textwidth}
         \begin{itemize}
-            \item Doubly Connected Edge List - DCEL.
-            \item A spatial data structure collecting topological and geometric information for vertices, edges and faces contained by a surface in the plane.
-            \item Widely used to support polygon triangulation and its applications (art gallery problem, robot motion planing, circuit board printing, etc).
+            \item \textbf{Doubly Connected Edge List} - DCEL.
+            \item A spatial data structure to \textbf{represent planar subdivisions} of surfaces.
+            \item Represent topological and geometric information as vertices, edges, and faces.
+            \item \textbf{Applications}: polygon overlays, polygon triangulation and their applications in surveillance, robot motion planing, circuit board printing, etc.
         \end{itemize}
         \end{minipage}\hfill % maximize the horizontal separation
         \begin{minipage}{0.34\textwidth}
@@ -64,6 +65,17 @@
                 \item DCEL uses three tables: Vertices, Faces and Half-edges.
         \end{itemize}
         \vspace{0.25cm}
+        \begin{minipage}{0.79\textwidth}
+            \centering
+            \includegraphics[width=0.8\textwidth]{figures/dcel_representation2}
+        \end{minipage}\hfill % maximize the horizontal separation
+    \end{frame}
+
+   \begin{frame}{DCEL description}
+        \begin{itemize}
+                \item DCEL uses three tables: Vertices, Faces and Half-edges.
+        \end{itemize}
+        \vspace{0.25cm}
         \begin{minipage}{0.49\textwidth}
             \centering
             \includegraphics[width=0.8\textwidth]{figures/dcel_representation2}
@@ -74,11 +86,11 @@
         \end{minipage}
     \end{frame}
 
-    \begin{frame}{Advantages, challenges and contributions}
+    \begin{frame}{DCEL Advantages}
         \begin{itemize}
-            \item Very efficient for computation of  \textit{overlay operators}.
-            \item Allows multiple operations over the same DCEL.
-            \item The output of a DCEL operator can be input to another DCEL operator.
+            \item \textbf{Efficiency}: very efficient for computation of  \textit{overlay operators}.
+            \item \textbf{Re-usability}: allows multiple operations over the same DCEL.
+            \item \textbf{Pipelining}: the output of a DCEL operator can be input to another DCEL operator.
         \end{itemize}
         \vspace{0.25cm}
 
@@ -100,13 +112,13 @@
         %\includegraphics[width=0.9\textwidth]{figures/dcel_operators}        
     \end{frame}
 
-    \begin{frame}{Advantages, challenges and contributions}
+    \begin{frame}{Challenges and Contributions}
         \begin{itemize}
             \item Currently only sequential DCEL implementations exist.
             \item Unable to deal with large datasets (i.e. US Census tracks at national level).
-            \item We propose a \textit{scalable} and \textit{distributed} approach to compute the overlay between two DCEL layers.
-            \item Distribution enables scalability, but it also creates challenges: the \textbf{\textit{orphan-cell}} problem and the \textbf{\textit{orphan-hole}} problem.
-            \item We also present \textit{optimizations} that improve the overlay computation performance.  
+            \item We propose a \textit{scalable} \textit{distributed} approach to compute the overlay of two polygon layers using DCELs.
+            \item Distribution enables scalability, but introduces challenges: the \textbf{\textit{orphan-cell}} problem and the \textbf{\textit{orphan-hole}} problem.
+            % \item We also present \textit{optimizations} that improve the overlay computation performance.  
         \end{itemize}
    
     \end{frame}
@@ -125,8 +137,9 @@
     \begin{frame}{Scalable Implementation}
         \begin{itemize}
             \small
-            \item Partition Strategy: we partition the space into cells using a spatial index (e.g. quadtree)
-            \item Each input DCEL layer (e.g. A, B) is partitioned using the index
+            \item Two phases: (1) Distributed DCEL construction, and (2) Distributed overlay evaluation.
+            \item Distribution is based on a spatial index (e.g. quadtree)
+            \item Each input DCEL layer (e.g. A, B) is partitioned using the same index
         \end{itemize}
         \vspace{0.25cm}
 
@@ -137,7 +150,7 @@
     \begin{frame}{Scalable Implementation}
         \begin{itemize}
             \small
-            \item Each cell should contain all information needed so that it can compute the overlay DCEL locally
+            \item Each index cell should contain all information needed so that it can compute the overlay DCEL locally
             \item For each cell to be independent, we need to create "artificial" edges and vertices
         \end{itemize}
         \vspace{0.25cm}
